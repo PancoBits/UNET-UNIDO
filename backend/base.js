@@ -1,4 +1,4 @@
-const oracledb = require("oracledb"); //Llamamos la libreria
+import oracledb from "oracledb" 
 oracledb.initOracleClient(); //Iniciamos thick mode para poder usar oracle 11g
 
 const iniciarConection = async () => {
@@ -9,8 +9,6 @@ try {
     password: process.env.password, // Contraseña de la base de datos
     connectString: process.env.connectString, // Cadena de conexión (localhost/ se muestra en la conexión)
   });
-
-  console.log("Conectado a la base de datos");
 
   // Aquí puedes realizar operaciones con la base de datos, como crear tablas, insertar datos, etc.
   // Por ejemplo, crear una tabla de ejemplo:
@@ -39,5 +37,4 @@ try {
 } catch (error) {
   console.log("no se pudo ", error);
 }}
-
-iniciarConection()
+export default iniciarConection; // Exportamos la función para que pueda ser utilizada en otros archivos
