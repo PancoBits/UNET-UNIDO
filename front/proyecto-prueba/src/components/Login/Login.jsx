@@ -1,7 +1,7 @@
 import React from 'react'
 import './Login.css' // Assuming you have a CSS file for styling
 import { useState } from 'react'
-export default function Login() {
+export default function Login({setAuth,setUser}) {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
  const Login = (e) => {
@@ -27,9 +27,13 @@ export default function Login() {
       }
     })
     .then((result) => {
+       setAuth(true); // ✅ Marca como logueado
+      setUser(result.user); // 🧑‍💻 Guarda info del usuario
+       window.location.href = '/home'; // 🔄 Redirige
       console.log('Success:', result);
     })
     .catch((error) => {
+       setAuth(false);
       console.error('Error:', error);
     });
 };

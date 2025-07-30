@@ -12,7 +12,7 @@ try{
     
     if (result.rows.length > 0) {
         console.log('Datos del usuario:', result.rows[0]);
-
+  
         res.status(200).json({ message: 'Login successful', user: result.rows[0] });
     } else {
        
