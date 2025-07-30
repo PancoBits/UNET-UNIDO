@@ -5,12 +5,10 @@ const iniciarConection = async () => {
 try {
   // Configuramos la conexion a la base de datos
   const connection = await oracledb.getConnection({
-    user: process.env.user, // Usuario de la base de datos
-    password: process.env.password, // Contraseña de la base de datos
-    connectString: process.env.connectString, // Cadena de conexión (localhost/ se muestra en la conexión)
+    user: "PROYECTO", // Usuario de la base de datos
+    password: "PROYECTO", // Contraseña de la base de datos
+    connectString: "localhost/XE", // Cadena de conexión (localhost/ se muestra en la conexión)
   });
-
-  console.log("Conectado a la base de datos");
 
   // Aquí puedes realizar operaciones con la base de datos, como crear tablas, insertar datos, etc.
   // Por ejemplo, crear una tabla de ejemplo:
@@ -40,5 +38,4 @@ try {
   console.log("no se pudo ", error);
 }}
 
-iniciarConection()
 module.exports = iniciarConection; // Exportamos la función para que pueda ser utilizada en otros archivos
