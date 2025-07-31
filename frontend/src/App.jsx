@@ -1,13 +1,20 @@
-import Post from "./components/post"
+import { useState } from 'react'
+import Login from './components/Login/Login'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
-
-  return (
-    <>
-      <Post />
-      <h1>Welcome to the App</h1>
-      <p>This is a simple React application.</p>
-    </>
+   const [isAuthenticated, setIsAuthenticated] = useState(false); // 🧠 Controla acceso
+  const [userInfo, setUserInfo] = useState(null);
+   return (
+  <Router>
+      <Routes>
+        <Route path="/" element={<Login setAuth={setIsAuthenticated}setUser={setUserInfo} />} />
+        <Route
+          path="/home"
+          element={isAuthenticated ? <Home user={userInfo}/> : <Navigate to="/" />}
+        />
+      </Routes>
+    </Router>
   )
 }
 

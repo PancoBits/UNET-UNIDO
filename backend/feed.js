@@ -1,7 +1,7 @@
-import oracledb from 'oracledb';
-import express from 'express';
-import cors from 'cors';
-import iniciarConnection from './base.js';
+const oracledb = require('oracledb');
+const express = require('express');
+const cors = require('cors');
+const iniciarConnection = require('./base.js');
 
 const app = express();
 app.use(express.json());
@@ -15,7 +15,6 @@ app.post("/api/sendPost", (req,res) =>{
     console.log(id,text)
     res.send("Exito")
 });
-
 
 /*db.execute("SELECT * FROM CLIENT",[],{outFormat: oracledb.OUT_FORMAT_OBJECT}).then(
     result => console.log(result.rows[0])

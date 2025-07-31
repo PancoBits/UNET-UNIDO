@@ -1,4 +1,4 @@
-import oracledb from "oracledb" 
+const oracledb =  require("oracledb") 
 oracledb.initOracleClient(); //Iniciamos thick mode para poder usar oracle 11g
 
 const iniciarConection = async () => {
@@ -37,4 +37,4 @@ try {
 } catch (error) {
   console.log("no se pudo ", error);
 }}
-export default iniciarConection; // Exportamos la función para que pueda ser utilizada en otros archivos
+module.exports = iniciarConection; // Exportamos la función para que pueda ser utilizada en otros archivos
