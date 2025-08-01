@@ -1,10 +1,11 @@
 import React from 'react'
 
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 export default function Login({setAuth,setUser}) {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
+      const navigate = useNavigate();
  const Login = (e) => {
   e.preventDefault();
 
@@ -31,7 +32,7 @@ export default function Login({setAuth,setUser}) {
     .then((result) => {
        setAuth(true); // ✅ Marca como logueado
       setUser(result.user); // 🧑‍💻 Guarda info del usuario
-       window.location.href = '/home'; // 🔄 Redirige
+      navigate("/home") // 🔄 Redirige
       console.log('Success:', result);
     })
     .catch((error) => {
@@ -41,7 +42,7 @@ export default function Login({setAuth,setUser}) {
 };
   return (
     <div>
-      <Post />
+    
         <h1>Login Page</h1>
         <p>Please enter your credentials to log in.</p>
     <form>

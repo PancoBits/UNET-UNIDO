@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const { busqueda } = require('../controllers/busqueda');
 const {ping} = require('../controllers/pingController');
 const { login } = require('../controllers/loginController');
 const { register } = require('../controllers/RegisterController');
