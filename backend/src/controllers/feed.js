@@ -1,7 +1,5 @@
 const oracledb = require('oracledb');
-const express = require('express');
-const cors = require('cors');
-const iniciarConnection = require('./base.js');
+const iniciarConnection = require('../../base');
 const multer = require('multer');
 const fs = require("node:fs");
 
@@ -9,17 +7,11 @@ const upload = multer({
   dest: "./uploads",
 });
 
-const app = express();
-app.use('/uploads', express.static('uploads'));
-app.use(express.json());
-app.use(cors());
-const port = process.env.port || 3000;
-
 iniciarConnection().then((connection) => {
     global.db = connection;
 });
 
-app.get("/api/user/:id",async (req,res)=>{
+module.exports.getUserId = async (req,res)=>{
     const id = req.params.id
     console.log(id)
     try {
@@ -33,9 +25,9 @@ app.get("/api/user/:id",async (req,res)=>{
         console.log("Hubo un error:",error)
         res.status(404)
     }
-})
+}
 
-app.post("/api/sendPost", upload.single("image"), (req,res) =>{
+module.exports.subirPost = (upload.single("image"), (req,res) =>{
     const { text } = req.body;
 
 const newPath =
@@ -58,7 +50,7 @@ const newPath =
     res.send("Exito")
 });
 
-app.get("/api/getPost/:id", async (req, res) => {
+/*app.get("/api/getPost/:id", async (req, res) => {
     const id = req.params.id
     try {
         const row = await db.execute("SELECT * FROM PUBLICATION WHERE PUBLICATION_ID = :id",{id: id},{outFormat: oracledb.OUT_FORMAT_OBJECT});
@@ -69,11 +61,11 @@ app.get("/api/getPost/:id", async (req, res) => {
     }
 });
 
-/*db.execute("SELECT * FROM CLIENT",[],{outFormat: oracledb.OUT_FORMAT_OBJECT}).then(
+db.execute("SELECT * FROM CLIENT",[],{outFormat: oracledb.OUT_FORMAT_OBJECT}).then(
     result => console.log(result.rows[0])
 ).catch(error => console.log(error))
-db.close();*/
+db.close();
 
 app.listen(port, ()=>{
     console.log("Activo en ",port)
-});
+});*/

@@ -1,0 +1,67 @@
+
+#root{
+    width: 100vw;
+    padding: 0;
+}
+body{
+    align-items: start;
+}
+div{
+    box-shadow:none;
+}
+.materia-list{
+    list-style: none;
+}
+.input-error-text{
+    display: flex;
+    margin-left: 10px;
+    align-self: center;
+}
+.input-edit{
+    margin-top: 15px;
+}
+.edit-button{
+    position: sticky;
+    top: 50px;
+    left: 90%;
+}
+.allApp{
+    padding: 0;
+    width: 100%;
+    box-shadow: none;
+}
+.profile-item{
+    display: flex;
+}
+.flex-header-section{
+    padding: 30px;
+    padding-bottom: 0px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    box-shadow: none;
+}
+.flex-item-profile{
+    display: flex;
+    box-shadow: none;
+}
+.img-container{
+    background: #555;
+    flex-grow: 1;
+    max-width: 30%;
+    box-shadow: none;
+}
+.profile-info-container{
+    box-shadow: none;
+    padding-left: 30px;
+    text-align: left;
+    flex-direction: column;
+    flex-grow: 4;
+    max-width: 60%;
+}
+.main-container{
+    padding: 30px;
+    box-shadow: none;
+    width: 90%;
+    text-align: left;
+}

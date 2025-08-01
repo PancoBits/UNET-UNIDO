@@ -3,6 +3,9 @@ const app = express();
 const port = 3000;
 const routes = require('./api/endpoint');
 const cors = require('cors');
+app.use('/uploads', express.static('uploads'));
+
+
 app.use(cors({
   origin: 'http://localhost:5173', 
   methods: 'GET,POST',
