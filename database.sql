@@ -21,12 +21,11 @@ create table reactions (
    constraint reactions_pk primary key ( reactions_id )
 );
 
-
 create table publication (
    publication_id number,
    client_id      number not null,
    text           varchar2(255) not null,
-   multimedia     blob,
+   multimedia     varchar2(255),
    label          varchar2(50),
    comment_id     number not null,
    reactions_id   number not null,

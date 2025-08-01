@@ -1,4 +1,5 @@
 import React from 'react'
+import Post from '../post'
 import './Login.css' // Assuming you have a CSS file for styling
 import { useState } from 'react'
 export default function Login({setAuth,setUser}) {
@@ -39,6 +40,7 @@ export default function Login({setAuth,setUser}) {
 };
   return (
     <div>
+      <Post />
         <h1>Login Page</h1>
         <p>Please enter your credentials to log in.</p>
     <form>
