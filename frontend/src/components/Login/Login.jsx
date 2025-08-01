@@ -1,11 +1,12 @@
 import React from 'react'
-import './login.css'
+
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
+import "./login.css"
 export default function Login({setAuth,setUser}) {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
-      const navigate = useNavigate();
  const Login = (e) => {
   e.preventDefault();
 
@@ -32,7 +33,7 @@ export default function Login({setAuth,setUser}) {
     .then((result) => {
        setAuth(true); // ✅ Marca como logueado
       setUser(result.user); // 🧑‍💻 Guarda info del usuario
-      navigate("/home") // 🔄 Redirige
+       window.location.href = '/home'; // 🔄 Redirige
       console.log('Success:', result);
     })
     .catch((error) => {
@@ -41,18 +42,19 @@ export default function Login({setAuth,setUser}) {
     });
 };
   return (
-    <div>
-    
-        <h1>Pagina de login</h1>
-        <p>Por favor ingrese su informacin</p>
+     <div className='allApp'>
+    <div className="container-login">
+        <h1>Login Page</h1>
+        <p>Please enter your credentials to log in.</p>
     <form>
-        <label>email</label>
-        <input onChange={(e)=>setUsername(e.target.value)} type="email" name="username" />
-        <label>Contraseña</label>
-        <input onChange={(e)=>setPassword(e.target.value)}  type="password" name="password" />
-        <button type="submit"onClick={Login}>Login</button>
+        <label className='label-hidden'>email</label>
+        <input className='input-login' onChange={(e)=>setUsername(e.target.value)} type="email" name="username" placeholder='email'/>
+        <label className='label-hidden'>password</label>
+        <input className='input-login' onChange={(e)=>setPassword(e.target.value)}  type="password" name="password" placeholder='contraseña'/>
+        <button className="button-login" type="submit"onClick={Login}>Ingresar</button>
     </form>
-        <p>No tienes una cuenta? <Link to="/register">Registrarse aca</Link></p>
+        <p>Don't have an account? <Link to="/register">Register here</Link></p>
     </div>
+  </div>
   )
 }
