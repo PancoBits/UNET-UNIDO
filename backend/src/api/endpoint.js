@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-
+const { busqueda } = require('../controllers/busqueda');
 const {ping} = require('../controllers/pingController');
 const { login } = require('../controllers/loginController');
 const { register } = require('../controllers/RegisterController');
 router.get('/ping', ping);
 router.post('/login',login);
 router.post('/register',register);
+router.get('/buscar', busqueda);
 module.exports = router;

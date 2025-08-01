@@ -13,8 +13,9 @@ function App() {
         <Route path="/" element={<Login setAuth={setIsAuthenticated}setUser={setUserInfo} />} />
       
          <Route path='/register' element={<Register  setAuth={setIsAuthenticated} setUser={setUserInfo} />} />
-        <Route element={isAuthenticated ? <Home path='home'  user={userInfo}/> : <Navigate to="/" />}
+        <Route path='/home' element={isAuthenticated ? <Home   user={userInfo}/> : <Navigate to="/" />}
         />
+
      
       </Routes>
     </Router>

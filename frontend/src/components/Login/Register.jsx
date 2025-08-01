@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register({ setAuth, setUser }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-const [roles, setroles] = useState('')
-
+const [roles, setroles] = useState('alumno')
+  const navigate = useNavigate();
 console.log(roles)
   const handleRegister = (e) => {
     e.preventDefault();
@@ -33,7 +34,7 @@ console.log(roles)
       .then((result) => {
         setAuth(true);
         setUser({ name, email });
-        window.location.href = '/home';
+        navigate("/home")
         console.log('Registered:', result);
       })
       .catch((error) => {
@@ -55,7 +56,7 @@ console.log(roles)
         <label>Password</label>
         <input onChange={(e) => setPassword(e.target.value)} type="password" value={password} />
        <label >eres alumno o profesor</label>
-        <select onChange={(e)=>setroles(e.target.value)} id="roles">
+        <select  onChange={(e)=>setroles(e.target.value)} id="roles">
           <option  value="alumno">Alumno</option>
            <option value="profesor">Profesor</option>
 
