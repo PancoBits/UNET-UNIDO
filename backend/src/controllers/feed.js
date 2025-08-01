@@ -27,21 +27,29 @@ module.exports.getUserId = async (req,res)=>{
     }
 }
 
-module.exports.subirPost = (upload.single("image"), (req,res) =>{
-    const { text } = req.body;
+module.exports.subirPost = (upload.single("image"), async (req,res) =>{
+    const { id, text } = req.body;
 
-const newPath =
+    if(req.file){
+ const newPath =
       "uploads/" +
       5 +
       "" +
       Date.now() +
       req.file.originalname.replace(/[^a-zA-Z0-9.]/g, "");
     fs.renameSync(req.file.path, newPath);
+    }
+
+const getNextIdQuery = 'SELECT NVL(MAX(publication_id), 0) + 1 AS nextId FROM publication';
+const resultId = await conn.execute(getNextIdQuery, [], {
+      outFormat: oracledb.OUT_FORMAT_OBJECT
+    });
+    const nextClientId = resultId.rows[0].NEXTID;
     db.execute("INSERT INTO PUBLICATION (PUBLICATION_ID, CLIENT_ID, TEXT, MULTIMEDIA, COMMENT_ID, REACTIONS_ID) VALUES (:1, :2, :3, :4, :5, :6)", [
-        5, 
-        1, 
+        6, 
+        nextClientId, 
         text,
-        newPath,
+        newPath ? newPath : Null,
         1,
         1 
     ])
