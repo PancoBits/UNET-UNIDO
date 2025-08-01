@@ -45,13 +45,7 @@ console.log(busqueda)
 
         })
     ): (
-      usuario.filter((user)=>user.NAME.includes(busqueda)).map(
-        usuarioFiltrado=>{
-      return(    <div></div>
-)
-
-
-        })
+      null
     )
 
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Register({ setAuth, setUser }) {
   const [name, setName] = useState('');
@@ -46,14 +46,14 @@ console.log(roles)
 
   return (
     <div>
-      <h1>Register Page</h1>
-      <p>Please enter your details to create an account.</p>
+      <h1>Pagina de Registro</h1>
+      <p>Por favor ingrese su información</p>
       <form onSubmit={handleRegister}>
-        <label>Name</label>
+        <label>Nombre</label>
         <input onChange={(e) => setName(e.target.value)} type="text" value={name} />
         <label>Email</label>
         <input onChange={(e) => setEmail(e.target.value)} type="email" value={email} />
-        <label>Password</label>
+        <label>Contraseña</label>
         <input onChange={(e) => setPassword(e.target.value)} type="password" value={password} />
        <label >eres alumno o profesor</label>
         <select  onChange={(e)=>setroles(e.target.value)} id="roles">
@@ -61,8 +61,9 @@ console.log(roles)
            <option value="profesor">Profesor</option>
 
        </select>
-        <button type="submit">Register</button>
+        <button type="submit">Registrar</button>
       </form>
+        <p>Tienes una cuenta? <Link to="/">Registrarse</Link></p>
     </div>
   );
 }
