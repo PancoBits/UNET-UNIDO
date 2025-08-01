@@ -1,3 +1,5 @@
+alter table client add roles varchar2(20);
+
 create table client (
    client_id number not null,
    name      varchar2(255) not null,

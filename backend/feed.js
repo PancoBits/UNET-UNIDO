@@ -19,6 +19,22 @@ iniciarConnection().then((connection) => {
     global.db = connection;
 });
 
+app.get("/api/user/:id",async (req,res)=>{
+    const id = req.params.id
+    console.log(id)
+    try {
+        const row = await db.execute("SELECT * FROM CLIENT WHERE CLIENT_ID=:id",{id: id},{outFormat: oracledb.OUT_FORMAT_OBJECT})
+        if(row.rows.length){
+            res.json(row.rows[0])
+        }else{
+            res.json({error: "No se encontró usuario"})
+        }
+    } catch (error) {
+        console.log("Hubo un error:",error)
+        res.status(404)
+    }
+})
+
 app.post("/api/sendPost", upload.single("image"), (req,res) =>{
     const { text } = req.body;
 
