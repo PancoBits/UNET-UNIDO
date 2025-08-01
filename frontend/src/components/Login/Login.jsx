@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './login.css'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 export default function Login({setAuth,setUser}) {
@@ -43,16 +43,16 @@ export default function Login({setAuth,setUser}) {
   return (
     <div>
     
-        <h1>Login Page</h1>
-        <p>Please enter your credentials to log in.</p>
+        <h1>Pagina de login</h1>
+        <p>Por favor ingrese su informacin</p>
     <form>
         <label>email</label>
         <input onChange={(e)=>setUsername(e.target.value)} type="email" name="username" />
-        <label>password</label>
+        <label>Contraseña</label>
         <input onChange={(e)=>setPassword(e.target.value)}  type="password" name="password" />
         <button type="submit"onClick={Login}>Login</button>
     </form>
-        <p>Don't have an account? <Link to="/register">Register here</Link></p>
+        <p>No tienes una cuenta? <Link to="/register">Registrarse aca</Link></p>
     </div>
   )
 }

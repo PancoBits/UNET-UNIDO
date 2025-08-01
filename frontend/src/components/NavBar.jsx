@@ -33,21 +33,25 @@ console.log(busqueda)
 
 
 {
-    usuario.filter((user)=>user.NAME.includes(busqueda)).map(
+   busqueda ?  (  usuario.filter((user)=>user.NAME.includes(busqueda)).map(
         usuarioFiltrado=>{
       return(    <div key={usuarioFiltrado.CLIENT_ID}>           
             
- <div >{usuarioFiltrado.NAME}</div>
- <div >{usuarioFiltrado.ROLE}</div>
+ <div >{usuarioFiltrado.NAME}@</div>
+ <div >{usuarioFiltrado.ROLES}</div>
  </div>
 )
 
 
-        }
+        })
+    ): (
+      null
     )
 
-    
+
 }
+    
+
     </div>
   )
 }
