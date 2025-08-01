@@ -1,7 +1,7 @@
 import React from 'react'
-import Post from '../post'
-import './Login.css' // Assuming you have a CSS file for styling
+
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 export default function Login({setAuth,setUser}) {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
@@ -24,6 +24,7 @@ export default function Login({setAuth,setUser}) {
       if (response.ok) {
         return response.json();
       } else {
+        alert('hubo un error en los datos');
         throw new Error('Network response was not ok');
       }
     })
@@ -44,12 +45,13 @@ export default function Login({setAuth,setUser}) {
         <h1>Login Page</h1>
         <p>Please enter your credentials to log in.</p>
     <form>
-        <label>user</label>
-        <input onChange={(e)=>setUsername(e.target.value)} type="text" name="username" />
+        <label>email</label>
+        <input onChange={(e)=>setUsername(e.target.value)} type="email" name="username" />
         <label>password</label>
         <input onChange={(e)=>setPassword(e.target.value)}  type="password" name="password" />
         <button type="submit"onClick={Login}>Login</button>
     </form>
+        <p>Don't have an account? <Link to="/register">Register here</Link></p>
     </div>
   )
 }
