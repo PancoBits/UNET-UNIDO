@@ -1,3 +1,5 @@
+alter table client add roles varchar(20);
+CREATE SEQUENCE CLIENTE_SEQ INCREMENT BY 1 START WITH 1 NOCACHE NOCYCLE;
 create table client (
    client_id number not null,
    name      varchar2(255) not null,

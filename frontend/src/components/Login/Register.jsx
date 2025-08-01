@@ -4,13 +4,13 @@ export default function Register({ setAuth, setUser }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+const [roles, setroles] = useState('')
 
-
-
+console.log(roles)
   const handleRegister = (e) => {
     e.preventDefault();
 
-    if (!name || !email || !password) {
+    if (!name || !email || !password||!roles) {
       alert('Por favor completa todos los campos');
       return;
     }
@@ -19,7 +19,7 @@ export default function Register({ setAuth, setUser }) {
        alert("correo no permitido, debe ser @unet.edu.ve")  
     return ;
    }
-    const data = { name, email, password };
+    const data = { name, email, password,roles };
 
     fetch('http://localhost:3000/register', {
       method: 'POST',
@@ -54,6 +54,12 @@ export default function Register({ setAuth, setUser }) {
         <input onChange={(e) => setEmail(e.target.value)} type="email" value={email} />
         <label>Password</label>
         <input onChange={(e) => setPassword(e.target.value)} type="password" value={password} />
+       <label >eres alumno o profesor</label>
+        <select onChange={(e)=>setroles(e.target.value)} id="roles">
+          <option  value="alumno">Alumno</option>
+           <option value="profesor">Profesor</option>
+
+       </select>
         <button type="submit">Register</button>
       </form>
     </div>

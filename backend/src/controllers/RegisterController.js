@@ -3,13 +3,13 @@ const oracledb = require('oracledb');
 const bcrypt = require('bcrypt');
 
 module.exports.register = async (req, res) => {
-  const { name, email, password } = req.body;
-
+  const { name, email, password,roles } = req.body;
+console.log(name, email, password,roles)
   const checkEmailQuery = 'SELECT * FROM client WHERE email = :email';
   const getNextIdQuery = 'SELECT NVL(MAX(client_id), 0) + 1 AS nextId FROM client';
   const insertUserQuery = `
-    INSERT INTO client (client_id, name, email, password)
-    VALUES (:client_id, :name, :email, :password)
+    INSERT INTO client (client_id, name, email, password, roles)
+    VALUES (:client_id, :name, :email, :password, :roles)
   `;
 
   try {
@@ -42,7 +42,8 @@ module.exports.register = async (req, res) => {
         client_id: nextClientId,
         name,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        roles
       },
       { autoCommit: true }
     );

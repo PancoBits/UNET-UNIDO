@@ -24,6 +24,7 @@ export default function Login({setAuth,setUser}) {
       if (response.ok) {
         return response.json();
       } else {
+        alert('hubo un error en los datos');
         throw new Error('Network response was not ok');
       }
     })
