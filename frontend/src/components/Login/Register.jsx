@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import './login.css'; // Si lo renombraste
 
 export default function Register({ setAuth, setUser }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -13,7 +14,11 @@ export default function Register({ setAuth, setUser }) {
       alert('Por favor completa todos los campos');
       return;
     }
-
+    console.log(email);
+   if(!email.endsWith("@unet.edu.ve")){
+       alert("correo no permitido, debe ser @unet.edu.ve")  
+    return ;
+   }
     const data = { name, email, password };
 
     fetch('http://localhost:3000/register', {
